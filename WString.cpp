@@ -27,6 +27,17 @@ String::String(const char *cstr)
 	if (cstr) copy(cstr, strlen(cstr));
 }
 
+// add by anegadian
+String::String(const char *cstr, size_t size) {
+    init();
+    if (cstr && size > 0)
+    {
+        size = min(size, strnlen(cstr, size));
+        copy(cstr, size);
+        wbuffer()[size] = '\0';
+    }
+}
+
 // add by fkb 16/12/28
 String::String(const string& rhs) {
 	init();
